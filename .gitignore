@@ -1,0 +1,47 @@
+# Build artifacts
+build/
+install/
+log/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+
+# YOLO models (large files)
+*.pt
+*.onnx
+*.engine
+
+# ROS2 generated files
+*.bag
+*.db3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Dataset folders (too large for git)
+mineral-+++-8/
+runs/
+
+# Photos (can be large)
+photos/
+
+# mycobot_ros2 is a submodule or can be cloned separately
+src/mycobot_ros2/
