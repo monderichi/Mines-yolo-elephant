@@ -45,16 +45,26 @@ colcon build --symlink-install
 source install/setup.bash
 ```
 
-### 5. Launch MoveIt 2 with RViz
+### 5. Launch Gazebo Simulation (Terminal 1)
 
 ```bash
-ros2 launch mycobot_moveit_config move_group.launch.py
+source /opt/ros/jazzy/setup.bash
+source /root/ros2_ws/install/setup.bash
+ros2 launch mycobot_gazebo mycobot.gazebo.launch.py use_rviz:=false
 ```
 
-### 6. Launch with Gazebo Simulation
+### 6. Launch MoveIt 2 with RViz (Terminal 2)
 
 ```bash
-bash ~/ros2_ws/src/mycobot_ros2/mycobot_bringup/scripts/mycobot_280_gazebo_and_moveit.sh
+source /opt/ros/jazzy/setup.bash
+source /root/ros2_ws/install/setup.bash
+ros2 launch mycobot_moveit_config move_group.launch.py use_sim_time:=true
+```
+
+### Alternative: MoveIt Demo Only (No Gazebo)
+
+```bash
+ros2 launch mycobot_moveit_config move_group.launch.py use_sim_time:=false
 ```
 
 ## 📦 Packages Included
