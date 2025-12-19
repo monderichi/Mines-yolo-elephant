@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="mycobot_320">
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="base_link"/>
+
+    <!-- Arm group using chain definition - tip is link6 (no flange) -->
+    <group name="arm">
+        <chain base_link="base_link" tip_link="link6"/>
+    </group>
+
+    <!-- End effector group for motion planning -->
+    <end_effector name="end_effector" parent_link="link6" group="arm"/>
+
+    <!-- Home position: all joints at zero -->
+    <group_state name="home" group="arm">
+        <joint name="joint2_to_joint1" value="0"/>
+        <joint name="joint3_to_joint2" value="0"/>
+        <joint name="joint4_to_joint3" value="0"/>
+        <joint name="joint5_to_joint4" value="0"/>
+        <joint name="joint6_to_joint5" value="0"/>
+        <joint name="joint6output_to_joint6" value="0"/>
+    </group_state>
+
+    <!-- Ready position: arm extended upward -->
+    <group_state name="ready" group="arm">
+        <joint name="joint2_to_joint1" value="0"/>
+        <joint name="joint3_to_joint2" value="0"/>
+        <joint name="joint4_to_joint3" value="1.5708"/>
+        <joint name="joint5_to_joint4" value="1.5708"/>
+        <joint name="joint6_to_joint5" value="0"/>
+        <joint name="joint6output_to_joint6" value="0"/>
+    </group_state>
+
+    <!-- Disable self-collision checking for adjacent and non-colliding links -->
+    <disable_collisions link1="base_link" link2="link1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link2" reason="Never"/>
+    <disable_collisions link1="base_link" link2="link3" reason="Never"/>
+    <disable_collisions link1="base_link" link2="link4" reason="Never"/>
+    <disable_collisions link1="base_link" link2="link5" reason="Never"/>
+    <disable_collisions link1="base_link" link2="link6" reason="Never"/>
+
+    <disable_collisions link1="link1" link2="link2" reason="Adjacent"/>
+    <disable_collisions link1="link1" link2="link3" reason="Never"/>
+    <disable_collisions link1="link1" link2="link4" reason="Never"/>
+    <disable_collisions link1="link1" link2="link5" reason="Never"/>
+    <disable_collisions link1="link1" link2="link6" reason="Never"/>
+
+    <disable_collisions link1="link2" link2="link3" reason="Adjacent"/>
+    <disable_collisions link1="link2" link2="link4" reason="Never"/>
+    <disable_collisions link1="link2" link2="link5" reason="Never"/>
+    <disable_collisions link1="link2" link2="link6" reason="Never"/>
+
+    <disable_collisions link1="link3" link2="link4" reason="Adjacent"/>
+    <disable_collisions link1="link3" link2="link5" reason="Never"/>
+    <disable_collisions link1="link3" link2="link6" reason="Never"/>
+
+    <disable_collisions link1="link4" link2="link5" reason="Adjacent"/>
+    <disable_collisions link1="link4" link2="link6" reason="Never"/>
+
+    <disable_collisions link1="link5" link2="link6" reason="Adjacent"/>
+
+</robot>
